@@ -32,11 +32,16 @@ Breaking PDF password protected files
 - Unlock the encrypted PDF file with the password 
 
 ## Online PDF hash extractor and JTR
+## Step 1
+I first used the online extractor to generate the hash code by importing the protected PDF file 
+https://www.onlinehashcrack.com/tools-pdf-hash-extractor.php
+  
+<img src="onlinehashl2.png">
+
+## Step 2
+I copied the extracted hash and save 
 
 
-
-
-> **Configuration note:** These IP values describe the example lab. Confirm the actual gateway, DHCP range, and assigned addresses in VirtualBox before applying a static address. Ensure the static address is outside the DHCP pool or excluded from it to prevent address conflicts.
 
 ## Prerequisites
 
@@ -150,133 +155,13 @@ Suggested name:
 Clean Kali - Network Baseline
 ```
 <div align="center">
-
-<img src="https://github.com/flashsudo/networkwalks-B083-week1-cybersecurity-lab-setup/blob/main/Screenshot%202026-11-08%20072222.png">
-
-<p><b>Figure 4:</b> Cybersecurity Virtual Lab - Taking SnapShot</p>
-
-</div>
+I first used the online extractor to generate the hash code by importing the protected PDF file 
+https://www.onlinehashcrack.com/tools-pdf-hash-extractor.php
+  
+<img src="onlinehash2.png">
 
 
-Create additional snapshots before major configuration changes or risky experiments. A snapshot is a recovery point, not a substitute for backing up important files.
 
-## Network configuration
-
-Example logical addressing plan:
-
-| Device | Example address | Purpose |
-|---|---:|---|
-| Virtual NAT gateway | `10.0.0.1` | Gateway shown in this lab example |
-| Kali Linux | `10.0.0.2/24` | Security workstation |
-| Future target VM 1 | `10.0.0.3/24` | Practice target |
-| Future target VM 2 | `10.0.0.4/24` | Additional practice target |
-| Reserved planning range | `10.0.0.3–10.0.0.99` | Future lab devices |
-
-The gateway address and DHCP behaviour can vary with the NAT Network configuration. Treat the table as the intended example plan, not a guarantee of VirtualBox defaults.
-
-## Validation checklist
-
-Run the following checks inside Kali Linux after connecting the VM to `NatNetwork`.
-
-| Test | Command | What to confirm |
-|---|---|---|
-| IP configuration | `ip -br address` | Expected interface address is present |
-| Routing | `ip route` | Default route uses the configured gateway |
-| Gateway reachability | `ping -c 4 10.0.0.1` | Replies, if ICMP is permitted |
-| External IP connectivity | `ping -c 4 8.8.8.8` | Replies, if ICMP is permitted |
-| DNS resolution | `getent hosts kali.org` | A DNS result is returned |
-| DNS diagnostic | `nslookup kali.org` | Name resolves through configured DNS |
-| Nmap installation | `nmap --version` | Installed version is displayed |
-
-**Important:** A failed ping does not always mean the network is unavailable; ICMP may be filtered. Use route checks and DNS/HTTPS tests as additional evidence. Do not publish private keys, passwords, tokens, or sensitive network details in screenshots.
-
-## Troubleshooting
-
-### No internet access after setting a static IP
-
-1. Check the active connection name:
-
-   ```bash
-   nmcli connection show --active
-   ```
-
-2. Check the IP address and routing table:
-
-   ```bash
-   ip -br address
-   ip route
-   ```
-
-3. Confirm that the gateway belongs to the configured NAT Network.
-4. Check that the static IP does not conflict with the DHCP pool or another VM.
-5. Verify DNS separately:
-
-   ```bash
-   resolvectl status
-   getent hosts kali.org
-   ```
-
-6. If needed, temporarily return the connection to DHCP and test again.
-
-Avoid applying random NetworkManager workarounds without checking the active profile and the actual error message. The command `ipv4.dad-timeout` is not a general fix for missing internet connectivity.
-
-### VirtualBox reports a VT-x / AMD-V error
-
-1. Restart the host computer.
-2. Enter BIOS/UEFI setup.
-3. Enable the processor's hardware-virtualization feature (Intel VT-x or AMD-V/SVM).
-4. Save the firmware settings and restart.
-5. Check the host operating system's virtualization configuration if the error remains.
-
-On Windows, Hyper-V or other hypervisor-based security features can affect VirtualBox behaviour depending on the VirtualBox version and host configuration. Review the relevant VirtualBox documentation before changing those settings.
-
-### VMs cannot communicate with each other
-
-- Confirm that each VM is attached to the same **NAT Network**, not separate NAT instances.
-- Confirm that each VM has a unique IP address in the same subnet.
-- Check the guest firewall rules.
-- Verify the NAT Network's DHCP and IPv4 prefix settings.
-
-## Learning outcomes
-
-This setup provides practical experience with:
-
-1. **Virtualization:** creating and managing isolated guest systems.
-2. **Virtual networking:** understanding NAT versus NAT Network.
-3. **IPv4 configuration:** working with addresses, subnet masks, gateways, and DNS.
-4. **Linux administration:** using tools such as `ip`, `nmcli`, and `nslookup`.
-5. **Recovery planning:** using snapshots to return to a known-good state.
-6. **Technical documentation:** recording setup steps, tests, and troubleshooting decisions.
-
-## Next steps
-
-The environment can be extended with additional lab machines and exercises, for example:
-
-- Add an intentionally vulnerable target VM such as OWASP Broken Web Applications or Metasploitable, keeping it isolated.
-- Capture lab traffic with Wireshark.
-- Practise host discovery and port scanning against the lab targets only.
-- Set up a small web application security-testing environment.
-- Document each exercise with scope, commands, observations, and remediation notes.
-
-## Repository structure
-
-A suggested structure for keeping the project maintainable:
-
-```text
-cybersecurity-virtual-lab/
-├── README.md
-├── docs/
-│   ├── network-plan.md
-│   └── troubleshooting.md
-├── screenshots/
-│   ├── virtualbox-network.png
-│   ├── kali-vm-settings.png
-│   └── kali-network-test.png
-└── notes/
-    └── lab-observations.md
-```
-
-Add your own screenshots to `screenshots/` and update the filenames in this README when you commit them. Do not commit VM disk images, exported appliances, passwords, or private credentials.
 
 ## References
 
