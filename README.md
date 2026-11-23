@@ -16,10 +16,13 @@ This small Lab focuses on password hashing and password breaking using tools lik
 
 - [Objectives](#objectives)
 - [Procedural steps](#lab-architecture)
-- [Environment specification](#environment-specification)
-  
 
 ## Objectives
+
+Breaking PDF password protected files 
+
+
+## Procedural Steps
 
 - Install Johnny or using JTR in Kali terminal 
 - Import the password encrypted file(PDF) to generate the hash code using pdf-hash-extractor.
@@ -28,36 +31,10 @@ This small Lab focuses on password hashing and password breaking using tools lik
 - Start new attack to crack the password 
 - Unlock the encrypted PDF file with the password 
 
-## Lab architecture
+## Online PDF hash extractor and JTR
 
-```mermaid
-flowchart TB
-    H["Host computer<br/>Windows 10"] --> V["Oracle VM VirtualBox"]
-    V --> N["NAT Network<br/>10.0.0.0/24"]
-    N --> K["Kali Linux VM<br/>10.0.0.2"]
-    N -. "Future lab machines" .-> T["Target VM(s)<br/>10.0.0.3–10.0.0.99"]
-    N --> I["Outbound connectivity<br/>through NAT"]
-```
 
-The NAT Network allows virtual machines attached to the same network to communicate with one another and, when configured, access external networks through NAT. It is different from VirtualBox's single-VM **NAT** attachment mode.
 
-## Environment specification
-
-| Component | Configuration |
-|---|---|
-| 🖥️ Host operating system | Windows 11 |
-| 🧠 Host memory | 8 GB or more|
-| ⚡ Processor | Intel Core i5 or upgraded version |
-| 🧰 Hypervisor | Oracle VM VirtualBox 7.2 |
-| 🐉 Security distribution | Kali Linux 2026.2 |
-| 🧠 Kali VM memory | 2,048 MB |
-| 🌐 Virtual network mode | NAT Network |
-| 📡 Network name | `NatNetwork` |
-| 📡 IPv4 network | `10.0.0.0/24` |
-| 🐧 Kali IPv4 address | `10.0.0.2/24` |
-| 🚪 Default gateway | `10.0.0.1` |
-| 🌍 DNS resolver | `8.8.8.8` |
-| 🔮 Planned target address range | `10.0.0.3–10.0.0.99` |
 
 > **Configuration note:** These IP values describe the example lab. Confirm the actual gateway, DHCP range, and assigned addresses in VirtualBox before applying a static address. Ensure the static address is outside the DHCP pool or excluded from it to prevent address conflicts.
 
