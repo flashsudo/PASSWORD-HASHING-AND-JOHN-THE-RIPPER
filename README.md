@@ -43,6 +43,10 @@ I copied the extracted hash and save it in a text file. This will enable me to i
 
 <img src="H1.png">
 
+## Step 3
+This step involves using JTR. I then open JTR and import the hash file, click on start new Attack to generate the password 
+<img src="jtr.png">
+
 
 ## Prerequisites
 
