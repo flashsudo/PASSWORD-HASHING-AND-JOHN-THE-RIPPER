@@ -11,35 +11,22 @@
 
 ## Overview
 
-This repository documents the deployment of a small virtual cybersecurity lab using **Oracle VM VirtualBox** and **Kali Linux**. The lab provides a repeatable environment for learning Linux administration, network troubleshooting, reconnaissance, packet analysis, and authorized security testing.
-
-The initial setup uses a dedicated VirtualBox **NAT Network**. Additional virtual machines can later be attached to the same network to create controlled attacker-and-target exercises.
-
-> **Safety first:** Only scan or test virtual machines and systems that you own or have explicit permission to assess. Keep intentionally vulnerable targets isolated from production and public networks.
-
+This small Lab focuses on password hashing and password breaking using tools like JTR and NW hashing and breaking tools after the pentester gain access and some PDF document containing vital information are protected with password. 
 ## Contents
 
 - [Objectives](#objectives)
-- [Lab architecture](#lab-architecture)
+- [Procedural steps](#lab-architecture)
 - [Environment specification](#environment-specification)
-- [Prerequisites](#prerequisites)
-- [Deployment procedure](#deployment-procedure)
-- [Network configuration](#network-configuration)
-- [Validation checklist](#validation-checklist)
-- [Troubleshooting](#troubleshooting)
-- [Learning outcomes](#learning-outcomes)
-- [Next steps](#next-steps)
-- [References](#references)
+  
 
 ## Objectives
 
-- Install and configure VirtualBox.
-- Import and configure a Kali Linux virtual machine.
-- Create a dedicated NAT Network for lab machines.
-- Configure and verify IPv4 connectivity and DNS.
-- Create a clean VM snapshot for recovery.
-- Record the configuration so the lab can be reproduced.
-- Prepare the environment for future, authorized security exercises.
+- Install Johnny or using JTR in Kali terminal 
+- Import the password encrypted file(PDF) to generate the hash code using pdf-hash-extractor.
+- Save the generated hash as text file.
+- Launch JTR and import the hash file
+- Start new attack to crack the password 
+- Unlock the encrypted PDF file with the password 
 
 ## Lab architecture
 
