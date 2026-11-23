@@ -39,8 +39,9 @@ https://www.onlinehashcrack.com/tools-pdf-hash-extractor.php
 <img src="onlinehashl2.png">
 
 ## Step 2
-I copied the extracted hash and save 
+I copied the extracted hash and save it in a text file. This will enable me to import it into JTR
 
+<img src="H1.png">
 
 
 ## Prerequisites
